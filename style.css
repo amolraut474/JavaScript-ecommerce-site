@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*--------------------- header css----------------------------- */
+.cart-icons {
+    display: flex !important;
+    gap: 30px;
+    font-size: 18px;
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.Header {
+    border-bottom: 1px solid #e9e9e9;
+    padding: 10px 0px;
+}
+
+.Header .nav-link.active {
+    color: #5bdc65 !important;
+}
+
+.Header a.nav-link {
+    color: #000000 !important;
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0px 8px;
+}
+
+.Header .navbar-brand {
+    width: 10%;
+}
+
+.Header i::before {
+    font-weight: 800 !important;
+}
+
+/* banner css */
+.banner-section img {
+    max-width: 600px;
+}
+
+.banner-content h2 {
+    font-size: 65px;
+    font-weight: 600;
+}
+
+.banner-section h3 {
+    font-size: 18px;
+    color: #999999;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.banner-section h4 {
+    color: #666666;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.banner-section {
+    padding: 30px 0px;
+}
+
+.banner-section button {
+    color: #fff;
+    background: #5bdc65;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 15px 0px;
+}
+
+/* product css */
+.product-section {
+    background: #f7f7f7;
+    padding: 50px 0px;
+}
+
+.product-section h3 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    text-align: left;
+}
+ul.category-list {
+    padding: 0;
+}
+
+
+
+
+
+/* <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap");
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+
+body {
+background-color: #353b48;
+} */
+.product-section .container {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 1000px;
+    display: flex;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #f5f6fa;
+    padding: 10px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.sidebar input[type="text"] {
+    padding: 5px 5px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sidebar h3 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 5px 0;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover {
+    background-color: #dcdde1;
+}
+
+.content {
+    flex: 4;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.product {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow: hidden;
+}
+
+.product .img {
+    flex: 1;
+}
+
+.product .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: 0.5s;
+    transform: scale(0.75);
+}
+
+.product:hover img {
+    transform: scale(1);
+}
+
+.product .product-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-details span:nth-child(1) {
+    color: #000;
+    font-weight: 600;
+}
+
+.product-details span:nth-child(2) {
+    color: #666666;
+    font-weight: 600;
+}
+
+.product-details span:nth-child(3) {
+    font-size: 11px;
+    font-weight: 600;
+    color: #666666;
+}
+
+
+/* last section css */
+.last-section {
+    background-image: url('./img/leo_smartic_elements_home4_bg-1.jpg');
+    height: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.main-heading {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.sub-heading {
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+}
+
+.button-order {
+    color: #000;
+    background: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 15px 0px;
+}
+
+
+
+/* footer css */
+.footer {
+    padding: 60px 0px;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.footer-last {
+    padding: 5px 0px;
+}
+
+.footer li.list-group-item {
+    border: none;
+}
+
+.footer-3 {
+    padding-top: 40px;
+}
+
+h3.f-heading {
+    color: #999999;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.number {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 39px;
+    color: #5edd68;
+}
+
+.footer i {
+    color: #fff;
+    background: #5edd68;
+    padding: 11px;
+    font-size: 22px;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.e-f {
+    color: #000;
+    font-weight: 700;
+}
+
+p.copy {
+    color: #8b807e;
+    font-weight: 700;
+}
+
+.icon-box-f {
+    margin-top: 33px;
+}
+
+
+/*-------------------- Responsive css----------------------------- */
+@media (max-width:425px) {
+    .banner-section img {
+        max-width: 200px;
+    }
+    .product-section .container {
+        flex-direction: column;
+    }
+    .products {
+     
+        grid-template-columns: auto auto;
+    
+    }
+    .product {
+        width: 197px;
+    }
+    .product-section h3 {
+        text-align: left;
+    }
+    ul.category-list {
+    padding-left: 0px;
+}
+p.copy{
+    font-size: 15px;
+}
+h3.f-heading {
+    margin-left: 8px;
+}
+.main-heading {
+    font-size: 50px;
+    
+}
+.banner-content h2 {
+    font-size: 50px;
+}
+.banner-content {
+    text-align: center;
+    margin-top: 40px;
+}
+.banner-section div {
+    text-align: center;
+}
+.footer-3 {
+    padding-top: 0;
+}
+}
