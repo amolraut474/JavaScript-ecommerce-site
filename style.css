@@ -394,4 +394,9 @@ height: 100%;
 #product-list {
 grid-template-columns: auto auto;
 }
+.single-main-div {
+display: grid;
+grid-template-columns: 100%;
+padding: 0px 20px;
+}
 }
