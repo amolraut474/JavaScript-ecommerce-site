@@ -308,5 +308,99 @@ setPrices();
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+
+<div id="productList">
+    <!-- Product list will be dynamically populated here -->
+</div>
+
+<div id="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cartItems">
+        <!-- Cart items will be dynamically populated here -->
+    </ul>
+</div>
+
+<script>
+    let products = [
+        { id: 1, name: "Product 1", price: 19.99 },
+        { id: 2, name: "Product 2", price: 29.99 },
+        { id: 3, name: "Product 3", price: 39.99 }
+    ];
+
+    let cart = [];
+
+    function displayProductList() {
+        let productListDiv = document.getElementById("productList");
+
+        products.forEach(product => {
+            let productDiv = document.createElement("div");
+            productDiv.innerHTML = `<h3>${product.name}</h3><p>${product.price}</p>
+                                   <button onclick="addToCart(${product.id})">Add to Cart</button>
+                                   <input type="number" id="quantityInput${product.id}" value="1" min="1">
+                                   <button onclick="updateQuantity(${product.id})">Update Quantity</button>`;
+            productListDiv.appendChild(productDiv);
+        });
+    }
+
+    function addToCart(productId) {
+        let product = products.find(p => p.id === productId);
+        let quantity = parseInt(document.getElementById(`quantityInput${productId}`).value);
+
+        if (quantity > 0) {
+            let existingCartItem = cart.find(item => item.id === productId);
+
+            if (existingCartItem) {
+                existingCartItem.quantity += quantity;
+            } else {
+                cart.push({ id: productId, name: product.name, price: product.price, quantity: quantity });
+            }
+
+            updateCartDisplay();
+        }
+    }
+
+    function updateQuantity(productId) {
+        let product = products.find(p => p.id === productId);
+        let newQuantity = parseInt(document.getElementById(`quantityInput${productId}`).value);
+
+        let cartItem = cart.find(item => item.id === productId);
+
+        if (cartItem && newQuantity >= 0) {
+            cartItem.quantity = newQuantity;
+            updateCartDisplay();
+        }
+    }
+
+    function removeCartItem(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        let cartItemsUl = document.getElementById("cartItems");
+        cartItemsUl.innerHTML = "";
+
+        cart.forEach(item => {
+            let li = document.createElement("li");
+            li.innerHTML = `${item.name} - Quantity: ${item.quantity} - 
+                            <button onclick="removeCartItem(${item.id})">Remove</button>`;
+            cartItemsUl.appendChild(li);
+        });
+    }
+
+    // Initial display
+    displayProductList();
+</script>
+
+</body>
+</html>
 
 
