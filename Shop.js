@@ -151,7 +151,7 @@ function displaySingleProduct(product) {
     <p> <span class="atri">Seller:</span> ${product.seller}</p>
     <p><span class="atri"> Catagory:</span>${product.catagory}</p>
     <p></p>Order in the next <span class="atri-2">3 hours 33 minutes</span></p>
-    <p class="garrnty"><img src="./img/single-img.png" alt=""></p>
+    <p class="garrnty"><img src="https://new-basel2.myshopify.com/cdn/shop/files/trustseal_499x.png?v=1613716600" alt=""></p>
    
     </div>
     </div>
