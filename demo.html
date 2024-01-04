@@ -309,49 +309,4 @@ setPrices();
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-</head>
-<body>
 
-<h1>Product Name</h1>
-<p>Price: $19.99</p>
-
-<button id="addToCartBtn" onclick="addToCart()">Add to Cart</button>
-
-<input type="number" id="quantityInput" value="1" min="1">
-<button onclick="updateQuantity()">Update Quantity</button>
-
-<script>
-    let cart = [];
-
-    function addToCart() {
-        // Add your logic for adding the product to the cart
-        let product = {
-            name: "Product Name",
-            price: 19.99,
-            quantity: 1
-        };
-
-        cart.push(product);
-        console.log("Product added to cart:", product);
-    }
-
-    function updateQuantity() {
-        // Add your logic for updating the quantity
-        let newQuantity = document.getElementById("quantityInput").value;
-        
-        // Assuming you have a selected product in some way, for simplicity, let's use the first product in the cart
-        if (cart.length > 0) {
-            cart[0].quantity = parseInt(newQuantity);
-            console.log("Quantity updated:", cart[0]);
-        }
-    }
-</script>
-
-</body>
-</html>
