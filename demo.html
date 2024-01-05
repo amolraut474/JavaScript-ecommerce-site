@@ -521,3 +521,59 @@ function showCartPage() {
 
 generateProductList();
 updateCartIcon();
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart Example</title>
+</head>
+<body>
+    <div>
+        <h3>Product 1</h3>
+        <p>Price: $20</p>
+        <button onclick="addToCart('Product 1', 20)">Add to Cart</button>
+    </div>
+
+    <div>
+        <h3>Product 2</h3>
+        <p>Price: $30</p>
+        <button onclick="addToCart('Product 2', 30)">Add to Cart</button>
+    </div>
+
+    <div id="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+let cart = [];
+
+function addToCart(productName, price) {
+    const cartItem = {
+        name: productName,
+        price: price,
+    };
+
+    cart.push(cartItem);
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>No items in the cart</p>";
+    } else {
+        cart.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${item.name} - $${item.price}`;
+            cartItemsContainer.appendChild(listItem);
+        });
+    }
+}
