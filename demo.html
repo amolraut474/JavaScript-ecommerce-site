@@ -505,3 +505,135 @@ setPrices();
         const productId = cartItem.getAttribute('data-product-id');
         const correspondingCartItem = document.querySelector(`#cart-items li[data-product-id="${productId}"]`);
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Product List</title>
+    <style>
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #single-product {
+            display: none;
+        }
+
+        #cart {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+  <div id="product-list">
+    <!-- Dynamic product list will be added here -->
+  </div>
+
+  <div id="single-product">
+    <h2 id="product-title"></h2>
+    <p id="product-description"></p>
+    <p>Price: $<span id="product-price"></span></p>
+    <label for="quantity">Quantity:</label>
+    <button onclick="decrementQuantity()">-</button>
+    <input type="text" id="quantity" value="1" readonly>
+    <button onclick="incrementQuantity()">+</button>
+    <button onclick="addToCart()">Add to Cart</button>
+  </div>
+
+  <div id="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const productList = document.getElementById('product-list');
+      const singleProductContainer = document.getElementById('single-product');
+      const cartContainer = document.getElementById('cart');
+      const cartItemsContainer = document.getElementById('cart-items');
+
+      // Sample product data
+      const productsData = [
+        { id: 1, title: 'Product 1', description: 'Description of Product 1', price: 20.99 },
+        { id: 2, title: 'Product 2', description: 'Description of Product 2', price: 29.99 },
+        // Add more products as needed
+      ];
+
+      // Populate product list dynamically
+      productsData.forEach(productData => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        productElement.textContent = productData.title;
+
+        productElement.addEventListener('click', function() {
+          showSingleProduct(productData);
+        });
+
+        productList.appendChild(productElement);
+      });
+
+      function showSingleProduct(productData) {
+        const productTitle = document.getElementById('product-title');
+        const productDescription = document.getElementById('product-description');
+        const productPrice = document.getElementById('product-price');
+        const quantityInput = document.getElementById('quantity');
+
+        // Display single product details
+        productTitle.textContent = productData.title;
+        productDescription.textContent = productData.description;
+        productPrice.textContent = productData.price.toFixed(2);
+        quantityInput.value = 1;
+
+        // Show the single product container
+        singleProductContainer.style.display = 'block';
+      }
+
+      function addToCart() {
+        const productTitle = document.getElementById('product-title').textContent;
+        const productPrice = parseFloat(document.getElementById('product-price').textContent);
+        const quantity = parseInt(document.getElementById('quantity').value, 10);
+
+        // Calculate total price
+        const totalPrice = (productPrice * quantity).toFixed(2);
+
+        // Create cart item element
+        const cartItem = document.createElement('li');
+        cartItem.textContent = `${productTitle} - Quantity: ${quantity} - Total: $${totalPrice}`;
+
+        // Add cart item to the cart
+        cartItemsContainer.appendChild(cartItem);
+
+        // Show the cart container
+        cartContainer.style.display = 'block';
+
+        // Hide the single product container
+        singleProductContainer.style.display = 'none';
+      }
+
+      function incrementQuantity() {
+        const quantityInput = document.getElementById('quantity');
+        let quantity = parseInt(quantityInput.value, 10);
+        quantity++;
+        quantityInput.value = quantity;
+      }
+
+      function decrementQuantity() {
+        const quantityInput = document.getElementById('quantity');
+        let quantity = parseInt(quantityInput.value, 10);
+        if (quantity > 1) {
+          quantity--;
+          quantityInput.value = quantity;
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
