@@ -412,3 +412,112 @@ function showCartItems() {
 generateProductList();
 updateCartIcon();
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Product Page</title>
+</head>
+<body>
+    <div id="product-list"></div>
+    <div id="single-product"></div>
+    <button onclick="showCartPage()">Go to Cart</button>
+    <div id="cart-page" style="display: none;">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+const products = [
+    { id: 1, name: "Product 1", price: 20 },
+    { id: 2, name: "Product 2", price: 30 },
+    // Add more products as needed
+];
+
+const productListContainer = document.getElementById("product-list");
+const singleProductContainer = document.getElementById("single-product");
+const cartContainer = document.getElementById("cart-items");
+const cartPage = document.getElementById("cart-page");
+
+let cart = [];
+
+function generateProductList() {
+    productListContainer.innerHTML = "";
+    products.forEach(product => {
+        const productElement = document.createElement("div");
+        productElement.innerHTML = `<h3>${product.name}</h3><p>${product.price}$</p>`;
+        
+        productElement.addEventListener("click", () => showSingleProductPage(product));
+        
+        productListContainer.appendChild(productElement);
+    });
+}
+
+function showSingleProductPage(product) {
+    singleProductContainer.innerHTML = `
+        <h2>${product.name}</h2>
+        <p>${product.price}$</p>
+        <button onclick="addToCart(${product.id})">Add to Cart</button>
+        <div>
+            Quantity: <button onclick="decreaseQuantity(${product.id})">-</button>
+            <span id="quantity-${product.id}">1</span>
+            <button onclick="increaseQuantity(${product.id})">+</button>
+        </div>
+    `;
+}
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    const quantityElement = document.getElementById(`quantity-${productId}`);
+    const quantity = parseInt(quantityElement.innerText);
+    
+    const cartItem = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: quantity
+    };
+
+    cart.push(cartItem);
+    updateCartIcon();
+}
+
+function increaseQuantity(productId) {
+    const quantityElement = document.getElementById(`quantity-${productId}`);
+    const quantity = parseInt(quantityElement.innerText) + 1;
+    quantityElement.innerText = quantity;
+}
+
+function decreaseQuantity(productId) {
+    const quantityElement = document.getElementById(`quantity-${productId}`);
+    const quantity = parseInt(quantityElement.innerText);
+    if (quantity > 1) {
+        quantityElement.innerText = quantity - 1;
+    }
+}
+
+function updateCartIcon() {
+    const cartIcon = document.getElementById("cart-icon");
+    cartIcon.innerText = `🛒 ${cart.length > 0 ? cart.length : ""}`;
+}
+
+function showCartPage() {
+    cartContainer.innerHTML = "";
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>No items in the cart</p>";
+    } else {
+        cart.forEach(item => {
+            const cartItemElement = document.createElement("div");
+            cartItemElement.innerHTML = `${item.name} x${item.quantity} - ${item.price * item.quantity}$`;
+            cartContainer.appendChild(cartItemElement);
+        });
+    }
+    cartPage.style.display = "block";
+}
+
+generateProductList();
+updateCartIcon();
