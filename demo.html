@@ -84,4 +84,95 @@ function updateCartDisplay() {
 }
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .banner-item {
+            width: 30%;
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Website Name</h1>
+    </header>
+
+    <section class="banner">
+        <!-- JavaScript will dynamically populate this section -->
+    </section>
+
+    <footer>
+        &copy; 2024 Your Website. All rights reserved.
+    </footer>
+
+    <script>
+        // JavaScript to populate the banner section using an array of objects
+        const bannerData = [
+            { title: "Banner 1", description: "Description 1", imageUrl: "image1.jpg" },
+            { title: "Banner 2", description: "Description 2", imageUrl: "image2.jpg" },
+            { title: "Banner 3", description: "Description 3", imageUrl: "image3.jpg" }
+            // Add more items as needed
+        ];
+
+        const bannerSection = document.querySelector('.banner');
+
+        bannerData.forEach(item => {
+            const bannerItem = document.createElement('div');
+            bannerItem.classList.add('banner-item');
+            bannerItem.innerHTML = `
+                <h2>${item.title}</h2>
+                <p>${item.description}</p>
+                <img src="${item.imageUrl}" alt="${item.title}" style="max-width: 100%;">
+            `;
+            bannerSection.appendChild(bannerItem);
+        });
+    </script>
+</body>
+</html>
 
