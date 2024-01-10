@@ -175,30 +175,6 @@ function updateCartDisplay() {
     </script>
 </body>
 </html>
-<div class="product">
-  <button class="add-to-cart-btn" onmouseover="displayProductInfo(this)">Add to Cart</button>
-  <div class="product-info">
-    <!-- Product details go here -->
-    <!-- e.g., product name, price, etc. -->
-  </div>
-</div>
-.product-info {
-  display: none;
-  /* Additional styling */
-}
 
-function displayProductInfo(button) {
-  // Find the associated product information div
-  var productInfo = button.nextElementSibling;
 
-  // Toggle visibility on hover
-  productInfo.style.display = productInfo.style.display === "block" ? "none" : "block";
-}
 
-var addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-
-addToCartButtons.forEach(function(button) {
-  button.addEventListener('mouseover', function() {
-    displayProductInfo(button);
-  });
-});
