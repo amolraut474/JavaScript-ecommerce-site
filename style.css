@@ -418,6 +418,16 @@ font-weight: 500;
 .single-products-page {
     padding: 50px 0px;
 }
+.back-to-shop{
+    color: #fff;
+    background: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 15px 0px;
+
+}
 #cart-popup {
     position: fixed;
     top: 50%;
