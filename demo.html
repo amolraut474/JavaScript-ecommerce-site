@@ -177,6 +177,77 @@ function updateCartDisplay() {
 </html>
 
 
+<!-- Product List Page -->
+<div id="product-list">
+  <!-- Product items will be dynamically added here -->
+</div>
+
+<!-- Single Product Page -->
+<div id="single-product" style="display: none;">
+  <!-- Product details will be dynamically added here -->
+  <button onclick="goToProductList()">Back to Product List</button>
+  <button class="add-to-cart-btn" onclick="addToCart(currentProduct)">Add to Cart</button>
+  <h3>Shopping Cart</h3>
+  <ul id="cart-items-single-product"></ul>
+</div>
+
+<!-- Cart -->
+<div id="cart">
+  <h2>Shopping Cart</h2>
+  <ul id="cart-items"></ul>
+</div>
+
+<script>
+  const products = [
+    { id: 1, name: 'Product 1', price: 19.99 },
+    { id: 2, name: 'Product 2', price: 29.99 },
+    // Add more products as needed
+  ];
+
+  const productList = document.getElementById('product-list');
+  const singleProductPage = document.getElementById('single-product');
+  const cartItemsList = document.getElementById('cart-items');
+  const cartItemsListSingleProduct = document.getElementById('cart-items-single-product');
+  let currentProduct;
+
+  products.forEach(product => {
+    const productItem = document.createElement('div');
+    productItem.className = 'product-item';
+    productItem.innerHTML = `
+      <p>${product.name} - $${product.price}</p>
+      <button onclick="openSingleProductPage(${JSON.stringify(product)})">View More</button>
+      <button class="add-to-cart-btn" onclick="addToCart(${JSON.stringify(product)})">Add to Cart</button>
+    `;
+    productList.appendChild(productItem);
+  });
+
+  function openSingleProductPage(product) {
+    currentProduct = product;
+    productList.style.display = 'none';
+    singleProductPage.style.display = 'block';
+
+    singleProductPage.innerHTML = `
+      <h2>${product.name}</h2>
+      <p>Price: $${product.price}</p>
+      <!-- Add more product details as needed -->
+      <button class="add-to-cart-btn" onclick="addToCart(${JSON.stringify(product)})">Add to Cart</button>
+    `;
+  }
+
+  function goToProductList() {
+    productList.style.display = 'flex';
+    singleProductPage.style.display = 'none';
+  }
+
+  function addToCart(product) {
+    const cartItem = document.createElement('li');
+    cartItem.textContent = `${product.name} - $${product.price}`;
+    cartItemsList.appendChild(cartItem);
+
+    const cartItemSingleProduct = cartItem.cloneNode(true);
+    cartItemsListSingleProduct.appendChild(cartItemSingleProduct);
+  }
+</script>
 
 
 
