@@ -1,164 +1,131 @@
-const products = [
-{
-id: 1,
-name: "Fire Boltt Ninja 2",
-img: "./img/w-1.jpg",
-amt: 1599,
-seller: "Boltt Store",
-catagory: "Watch",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 2,
-name: "Noise Pulse Go",
-img: "./img/Watch-2.jpg",
-amt: 1300,
-seller: "Noise Store",
-catagory: "Watch",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 3,
-name: "boAt Xtend Pro",
-img: "./img/Watch-2.jpg",
-amt: 2799,
-seller: "Rajesh Watchs",
-catagory: "Watch",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 4,
-name: "Lenovo Tab M8",
-img: "./img/Tablets-1.jpg",
-amt: 9270,
-seller: "Stonehenge Retail",
-catagory: "Tablets",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 5,
-name: "Honor PAD X8",
-img: "./img/Tablets-2.jpg",
-amt: 12999,
-seller: "Honor india",
-catagory: "Tablets",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 6,
-name: "IKALL N9 ",
-img: "./img/Tablets-3.jpg",
-amt: 3999,
-seller: "IKALL Store",
-catagory: "Tablets",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 7,
-name: "Oppo Pad Air",
-img: "./img/Tablets-4.jpg",
-amt: 15999,
-seller: "Oppo Store",
-catagory: "Tablets",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 8,
-name: "Acer EK220Q",
-img: "./img/Monitors-1.jpg",
-amt: 6249,
-seller: "Accer Store",
-catagory: "Monitors",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 9,
-name: "Samsung 24",
-img: "./img/Monitors-2.jpg",
-amt: 9799,
-seller: "Samsung Store",
-catagory: "Monitors",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 10,
-name: "ZEBRONICS AC32FHD ",
-img: "./img/Monitors-3.jpg",
-amt: 12799,
-seller: "ZEBRONICS Store",
-catagory: "Monitors",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 11,
-name: "Samsung",
-img: " ./img/samsang.webp",
-amt: 35000,
-seller: "Samsung Store",
-catagory: "Mobile",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 12,
-name: "One pluse",
-img: "./img/mobile.jpg",
-amt: 25000,
-seller: "Samsung Store",
-catagory: "Mobile",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-{
-id: 12,
-name: "Apple",
-img: "./img/apple.webp",
-amt: 100000,
-seller: "Samsung Store",
-catagory: "Mobile",
-Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate numquam repudiandae sapiente error possimus iste ad repellat id quia minima?",
-},
-];
-const productList = document.getElementById('product-list');
-const productPage = document.getElementById('product-page');
-let currentProduct;
-products.forEach(product => {
-const productItem = document.createElement('div');
-productItem.className = 'product-item';
-productItem.innerHTML = `
-<img src="${product.img}" alt="${product.name}">
-<h3>${product.name}</h3>
-<p> ${product.amt}</p>
-<p> ${product.seller}</p>
-<p> ${product.catagory}</p>
-`;
-productItem.onclick = function () {
-openProductPage(product);
-};
-productList.appendChild(productItem);
-});
-function openProductPage(product) {
-currentProduct = product;
-productList.style.display = 'none';
-productPage.style.display = 'block';
-productPage.innerHTML = `
-<div class="single-main-div">
-   <div cass="img-box">
-      <img src="${product.img}" alt="${product.name}">
-   </div>
-   <div cass="img-content">
-      <h3>${product.name}</h3>
-      <p class="amt"> ${product.amt}</p>
-      <p> ${product.Description}</p>
-      <p> <span class="atri">Seller:</span> ${product.seller}</p>
-      <p><span class="atri"> Catagory:</span>${product.catagory}</p>
-      <p></p>
-      Order in the next <span class="atri-2">3 hours 33 minutes</span></p>
-      <p class="garrnty"><img src="./img/single-img.png" alt=""></p>
-      <button onclick="goToProductList()" class="back-to-shop">Back to Product List</button>
-   </div>
-</div>
-`;
-}
-function goToProductList() {
-productList.style.display = 'flex';
-productPage.style.display = 'none';
-}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+      <title>Products</title>
+      <link rel="stylesheet" href="./style.css">
+   </head>
+   <body>
+      <section class="Header">
+         <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+               <form class="d-flex cart-icons-mobile" role="search">
+                  <i class="bi bi-bag"></i>
+                  <i class="bi bi-list"></i>
+               </form>
+               <a class="navbar-brand" href="#"><img src="./img/logo-2.png" alt=""></a>
+               <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                  aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="./Shop.html">Shop</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Pages</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                     </li>
+                  </ul>
+                  <form class="d-flex cart-icons" role="search">
+                     <section>Account</section>
+                     <i class="bi bi-search"></i>
+                     <i class="bi bi-bag"></i>
+                     <i class="bi bi-list"></i>
+                  </form>
+               </div>
+            </div>
+         </nav>
+      </section>
+      <section class="all-products">
+         <div class="container">
+            <!-- Product List Page -->
+            <div id="product-list">
+               <!-- Product items will be dynamically added here -->
+            </div>
+         </div>
+      </section>
+      <div class="container">
+         <!-- Single Product Page -->
+         <!-- Product Page -->
+         <div id="product-page" style="display: none;">
+            <!-- Product details will be dynamically added here -->
+            <button onclick="goToProductList()">Back to Product List</button>
+         </div>
+      </div>
+      <!-- footer section -->
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-3">
+                  <div class="f-logo">
+                     <img src="./img/logo-2.png" alt="">
+                     <p class="number">+911234567890</p>
+                     <p>Lorem ipsum dolor sitamet consectur adipiscing Duis esollici tudin augue euismod.</p>
+                  </div>
+               </div>
+               <div class="col-lg-3">
+                  <h3 class="f-heading">Useful Links</h3>
+                  <ul class="list-group list-group-flush">
+                     <li class="list-group-item">
+                        About
+                     </li>
+                     <li class="list-group-item">
+                        News
+                     </li>
+                     <li class="list-group-item">
+                        Partners
+                     </li>
+                  </ul>
+               </div>
+               <div class="col-lg-3 footer-3">
+                  <ul class="list-group list-group-flush ">
+                     <li class="list-group-item">Delivery and payment</li>
+                     <li class="list-group-item">Terms of sale</li>
+                     <li class="list-group-item">Contacts</li>
+                  </ul>
+               </div>
+               <div class="col-lg-3">
+                  <h3 class="f-heading">Follow Us</h3>
+                  <div class="icon-box-f">
+                     <span><i class="bi bi-instagram ic-1"></i>
+                     </i>
+                     <i class="bi bi-twitter ic-3">
+                     </i>
+                     <i class="bi bi-telegram ic-4"></i>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="footer-last">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <div>
+                     <p class="copy text-center">COPYRIGHT © 2023 - ALL RIGHTS RESERVED BY <span
+                        class="e-f">AMOL</span> </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="./Shop.js"></script>
+   </body>
+</html>
