@@ -388,6 +388,19 @@ font-weight: 500;
     padding: 5px;
     border-radius: 5px;
 }
+.back-to-shop{
+    color: #fff;
+    background: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 15px 0px;
+
+}
+#product-page img{
+width: 400px;
+}
 @media (max-width:425px){
 .product-item img {
 width: 100%;
