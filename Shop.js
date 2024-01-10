@@ -119,7 +119,10 @@ Description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptat
 ];
 const productList = document.getElementById('product-list');
 const productPage = document.getElementById('product-page');
+const cartItemsList = document.getElementById('cart-items');
+const cartPopup = document.getElementById('cart-popup');
 let currentProduct;
+let quantity = 1;
 products.forEach(product => {
 const productItem = document.createElement('div');
 productItem.className = 'product-item';
@@ -141,22 +144,59 @@ productList.style.display = 'none';
 productPage.style.display = 'block';
 productPage.innerHTML = `
 <div class="single-main-div">
-   <div cass="img-box">
+   <div class="img-box">
       <img src="${product.img}" alt="${product.name}">
    </div>
-   <div cass="img-content">
+   <div class="img-content">
       <h3>${product.name}</h3>
-      <p class="amt"> ${product.amt}</p>
       <p> ${product.Description}</p>
       <p> <span class="atri">Seller:</span> ${product.seller}</p>
       <p><span class="atri"> Catagory:</span>${product.catagory}</p>
       <p></p>
       Order in the next <span class="atri-2">3 hours 33 minutes</span></p>
       <p class="garrnty"><img src="./img/single-img.png" alt=""></p>
-      <button onclick="goToProductList()" class="back-to-shop">Back to Product List</button>
+      <p class="amt"> ${product.amt}</p>
+      <div class="Add-to-cart-div">
+         <!-- Add more product details as needed -->
+         <div class="quantity-btn">
+            <label for="quantity" class="atri">Quantity:</label>
+            <button onclick="decrementQuantity()">-</button>
+            <span id="quantity">${quantity}</span>
+            <button onclick="incrementQuantity()">+</button>
+         </div>
+         <button onclick="addToCart(currentProduct)" class="add-to-cart">Add to Cart</button>
+         <button onclick="goToProductList()" class="back-to-shop">Back to Product List</button>
+      </div>
    </div>
 </div>
 `;
+}
+function decrementQuantity() {
+if (quantity > 1) {
+quantity--;
+updateQuantityDisplay();
+}
+}
+function incrementQuantity() {
+quantity++;
+updateQuantityDisplay();
+}
+function updateQuantityDisplay() {
+document.getElementById('quantity').textContent = quantity;
+}
+function goToProductList() {
+singleProductPage.style.display = 'none';
+}
+function addToCart(product) {
+const cartItem = document.createElement('li');
+cartItem.textContent = `${product.name} - $${product.price} x ${quantity}`;
+cartItemsList.appendChild(cartItem);
+}
+function openCart() {
+cartPopup.style.display = 'block';
+}
+function closeCart() {
+cartPopup.style.display = 'none';
 }
 function goToProductList() {
 productList.style.display = 'flex';
