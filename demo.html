@@ -17,3 +17,99 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Product List with Quick View</title>
+</head>
+<body>
+
+<div id="productList">
+    <!-- Product items will be dynamically added here -->
+</div>
+
+<div id="singleProduct" style="display: none;">
+    <!-- Single product content -->
+    <button onclick="hideSingleProduct()">Close</button>
+    <h2 id="productName"></h2>
+    <p id="productDescription"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+#singleProduct {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.productItem {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    position: relative;
+}
+
+.quickViewButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+}
+
+.productItem:hover .quickViewButton {
+    display: block;
+}
+const productList = document.getElementById('productList');
+const singleProduct = document.getElementById('singleProduct');
+const productName = document.getElementById('productName');
+const productDescription = document.getElementById('productDescription');
+
+// Sample product data
+const products = [
+    { id: 1, name: 'Product 1', description: 'Description for Product 1' },
+    { id: 2, name: 'Product 2', description: 'Description for Product 2' },
+    // Add more products as needed
+];
+
+// Function to dynamically create product items
+const createProductItem = (id, name, description) => {
+    const productItem = document.createElement('div');
+    productItem.classList.add('productItem');
+    productItem.dataset.productId = id;
+    productItem.innerHTML = `
+        <p>${name}</p>
+        <button class="quickViewButton" onclick="showSingleProduct(${id})">Quick View</button>
+    `;
+    productItem.addEventListener('click', () => showSingleProduct(id));
+    return productItem;
+};
+
+// Function to show single product page
+const showSingleProduct = productId => {
+    const product = products.find(p => p.id === productId);
+    productName.textContent = product.name;
+    productDescription.textContent = product.description;
+    singleProduct.style.display = 'block';
+};
+
+// Function to hide single product page
+const hideSingleProduct = () => {
+    singleProduct.style.display = 'none';
+};
+
+// Populate the product list
+products.forEach(product => {
+    const productItem = createProductItem(product.id, product.name, product.description);
+    productList.appendChild(productItem);
+});
