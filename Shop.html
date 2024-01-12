@@ -7,50 +7,85 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
       <title>Products</title>
       <link rel="stylesheet" href="./style.css">
    </head>
    <body>
-      <section class="Header">
-         <nav class="navbar navbar-expand-lg ">
+      <section class="new-header">
+         <header>
+            <a href="index.html" class="logo"><img src="./img/logo-2.png" alt="logo-image"></a>
+            <div class="manu-on-desktop ">
+               <nav class="navbar navbar-expand-lg mobile-menu-none ">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                           <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="./Shop.html">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Pages</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">Contact</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+            <div class="icons-menu">
+            <div class="d-flex cart-icons align-items-center">
+               <a href="#" class="search-icon"> <span>Search</span> <i class="fa fa-search" aria-hidden="true"></i></a>
+               <!-- Cart Button -->
+               <button onclick="openCart()" class="cart-button"><img src="./img/shopping-bag.png" alt=""></button>
+               <!-- Cart Popup -->
+               <div id="cart-popup" style="display: none;">
+                  <h2>Your cart items are here.</h2>
+                  <ul id="cart-items"></ul>
+                  <button onclick="closeCart()" class="cart-button"><img src="./img/close.png" alt=""></button>
+               </div>
+               <button class="hamburger-icon"><i class="fa fa-bars" aria-hidden="true"></i></button> 
+            </div>
+         </header>
+         <div class="nav">
+            <div class="nav-content">
+               <button class="cross-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+               <ul>
+                  <li><a href="#"> Home </a></li>
+                  <li><a href="#"> about us </a></li>
+                  <li><a href="#"> products </a></li>
+                  <li><a href="#"> what we offers </a></li>
+                  <li><a href="#"> contact us </a></li>
+               </ul>
+               <ul class="terms-links">
+                  <li><a href="#">Terms & Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+               </ul>
+            </div>
+         </div>
+         <div class="banner">
             <div class="container">
-               <form class="d-flex cart-icons-mobile" role="search">
-                  <i class="bi bi-bag"></i>
-                  <i class="bi bi-list"></i>
-               </form>
-               <a class="navbar-brand" href="#"><img src="./img/logo-2.png" alt=""></a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="./Shop.html">Shop</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pages</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                     </li>
-                  </ul>
-                  <form class="d-flex cart-icons" role="search">
-                     <section>Account</section>
-                     <i class="bi bi-search"></i>
-                     <i class="bi bi-bag"></i>
-                     <i class="bi bi-list"></i>
-                  </form>
+               <div class="banner-inner">
+                  <div class="banner-image">
+                     <img src="./img/sidebar.jpg" alt="banner-image">
+                  </div>
+                  <div class="banner-content">
+                     <h1><b>
+                        Introducing new smart device</b><br>
+                        for your<br>
+                        <span>industrial needs...</span>
+                     </h1>
+                     <a href="#" class="theme-btn">Get Quote</a>
+                  </div>
                </div>
             </div>
-         </nav>
+         </div>
       </section>
       <section class="all-products">
          <div class="container">
@@ -73,14 +108,6 @@
                <button onclick="incrementQuantity()">+</button>
                <button onclick="addToCart(currentProduct)">Add to Cart</button>
             </div>
-         </div>
-         <!-- Cart Button -->
-         <button onclick="openCart()">Open Cart</button>
-         <!-- Cart Popup -->
-         <div id="cart-popup" style="display: none;">
-            <h2>Shopping Cart</h2>
-            <ul id="cart-items"></ul>
-            <button onclick="closeCart()">Close Cart</button>
          </div>
       </section>
       <!-- footer section -->
@@ -142,5 +169,19 @@
          </div>
       </div>
       <script src="./Shop.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+         crossorigin="anonymous"></script>
+      <script>
+         $(document).ready(function () {
+             $(document).on("click", ".hamburger-icon", function () {
+                 $(".nav").addClass("nav-left");
+             });
+             $(document).on("click", ".cross-btn", function () {
+                 $(".nav").removeClass("nav-left");
+             });
+         });
+         
+      </script>
    </body>
 </html>
