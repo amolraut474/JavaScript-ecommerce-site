@@ -18,3 +18,70 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Product List</title>
+  <style>
+    /* Add your styles for product list and quick view here */
+  </style>
+</head>
+<body>
+
+  <div id="productList">
+    <!-- Dynamic product list will be generated here -->
+  </div>
+
+  <div id="productModal" style="display: none;">
+    <!-- Single product page will be displayed here -->
+    <button onclick="closeModal()">Close</button>
+  </div>
+
+  <script>
+    // Sample product data
+    const products = [
+      { id: 1, name: 'Product 1', price: 19.99 },
+      { id: 2, name: 'Product 2', price: 29.99 },
+      // Add more products as needed
+    ];
+
+    // Function to generate product list dynamically
+    function generateProductList() {
+      const productListDiv = document.getElementById('productList');
+
+      products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>$${product.price}</p>
+          <button onclick="showProduct(${product.id})">Quick View</button>
+        `;
+        productListDiv.appendChild(productDiv);
+      });
+    }
+
+    // Function to show single product page in a modal
+    function showProduct(productId) {
+      const product = products.find(p => p.id === productId);
+      const modal = document.getElementById('productModal');
+      modal.innerHTML = `
+        <h2>${product.name}</h2>
+        <p>$${product.price}</p>
+        <!-- Add more product details as needed -->
+      `;
+      modal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      const modal = document.getElementById('productModal');
+      modal.style.display = 'none';
+    }
+
+    // Call the function to generate the initial product list
+    generateProductList();
+  </script>
+</body>
+</html>
