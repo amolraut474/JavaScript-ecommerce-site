@@ -1,4 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Single Product</title>
+  <style>
+    /* Add your styles for product details and image gallery here */
+  </style>
+</head>
+<body>
+
+  <div id="productDetails">
+    <!-- Dynamic product details will be generated here -->
+  </div>
+
+  <script>
+    // Sample product data with variants
+    const product = {
+      id: 1,
+      name: 'Product 1',
+      price: 19.99,
+      variants: [
+        { color: 'Red', image: 'red.jpg' },
+        { color: 'Blue', image: 'blue.jpg' },
+        // Add more variants as needed
+      ],
+    };
+
+    // Function to generate product details dynamically
+    function generateProductDetails() {
+      const productDetailsDiv = document.getElementById('productDetails');
+      productDetailsDiv.innerHTML = `
+        <h2>${product.name}</h2>
+        <p>$${product.price}</p>
+        <div id="variantGallery"></div>
+      `;
+
+      const variantGalleryDiv = document.getElementById('variantGallery');
+      product.variants.forEach(variant => {
+        const variantImage = document.createElement('img');
+        variantImage.src = variant.image;
+        variantImage.alt = `${product.name} - ${variant.color}`;
+        variantImage.addEventListener('click', () => changeProductImage(variant.image));
+        variantGalleryDiv.appendChild(variantImage);
+      });
+
+      // Display the first variant image by default
+      changeProductImage(product.variants[0].image);
+    }
+
+    // Function to change the main product image
+    function changeProductImage(imageUrl) {
+      // Update the main product image
+      // You can also update other product details based on the selected variant if needed
+      const productDetailsDiv = document.getElementById('productDetails');
+      productDetailsDiv.innerHTML += `<img src="${imageUrl}" alt="${product.name}">`;
+    }
+
+    // Call the function to generate the initial product details
+    generateProductDetails();
+  </script>
+</body>
+</html>
 
 
 
