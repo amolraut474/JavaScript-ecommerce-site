@@ -611,7 +611,8 @@ border: none;
 }
 }
 /* -------------------------shop page---------------------------------------------------- */
-#product-list {
+#product-list,
+#productList {
 display: grid;
 grid-template-columns: auto auto auto auto;
 padding: 60px 0px;
@@ -624,24 +625,28 @@ flex-direction: column;
 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 overflow: hidden;
 }
-.product-item:hover img {
+.product-item,
+.productContainer:hover img {
 transform: scale(1);
 }
 .product-item .img {
 flex: 1;
 }
-.product-item img {
+.product-item img,
+.productContainer img {
 width: 100%;
 height: 100%;
 object-fit: contain;
 transition: 0.5s;
 transform: scale(0.75);
 }
-.product-item img {
+.product-item img,
+.productContainer img {
 width: 300px;
 height: 300px;
 }
-.product-item {
+.product-item,
+.productContainer {
 cursor: pointer;
 border: 1px solid #ccc;
 background: #fff;
@@ -762,6 +767,44 @@ font-size: 20px;
 width: 100%;
 max-width: 70px;
 }
+/*--------------- new home css----------------- */
+#Home-page-new .img-box img {
+width: 200px;
+}
+#Home-page-new .single-main-div {
+display: grid;
+grid-template-columns: 50% 50%;
+}
+#Home-page-new .img-box {
+width: 100%;
+}
+#Home-page-new .garrnty img {
+width: 100%;
+}
+/* Add your styles for product list and quick view pop-up here */
+.productContainer {
+padding: 10px;
+}
+.quickViewBtn {
+background-color: #3498db;
+color: #fff;
+padding: 5px 10px;
+border: none;
+cursor: pointer;
+}
+#productModal {
+display: none;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 20px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+z-index: 1;
+width: 700px;
+border-radius: 3px;
+}
 @media (max-width:425px) {
 .product-item img {
 width: 100%;
@@ -770,9 +813,23 @@ height: 100%;
 #product-page img {
 width: 100%;
 }
-#product-list {
+#product-list,
+#productlist {
 grid-template-columns: auto auto;
 margin-top: 100px;
+}
+div#productList {
+grid-template-columns: 100%;
+margin-top: 100px !important;
+}
+div#modalContent {
+width: 100%;
+}
+#Home-page-new .single-main-div {
+grid-template-columns: 100%;
+}
+#productModal {
+width: 100%;
 }
 .single-main-div {
 display: grid;
