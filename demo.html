@@ -1,140 +1,32 @@
+npm install react-slick slick-carousel
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Products with Single Product Page</title>
-  <style>
-    /* Add your styles for product list and single product page here */
-    #productList {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
+const MyCarousel = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // Number of slides to show at once
+    slidesToScroll: 1,
+  };
 
-    .productContainer {
-      margin: 10px;
-      cursor: pointer;
-    }
+  return (
+    <Slider {...settings}>
+      <div>
+        <h3>Slide 1</h3>
+      </div>
+      <div>
+        <h3>Slide 2</h3>
+      </div>
+      <div>
+        <h3>Slide 3</h3>
+      </div>
+      {/* Add more slides as needed */}
+    </Slider>
+  );
+};
 
-    .productImage {
-      max-width: 100%;
-      height: auto;
-    }
-
-    #singleProductPage {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #variantGallery {
-      display: flex;
-      margin-top: 20px;
-    }
-
-    .variantImage {
-      width: 50px;
-      height: 50px;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-
-    .mainProductImage {
-      max-width: 100%;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="productList">
-    <!-- Dynamic product list will be generated here -->
-  </div>
-
-  <div id="singleProductPage">
-    <!-- Single product page will be displayed here -->
-    <button onclick="closeSingleProductPage()">Close</button>
-    <div id="singleProductDetails"></div>
-    <div id="variantGallery"></div>
-    <img id="mainProductImage" class="mainProductImage">
-  </div>
-
-  <script>
-    // Sample product data with variants
-    const products = [
-      { id: 1, name: 'Product 1', price: 19.99, description: 'Lorem ipsum...', variants: [
-        { color: 'Red', image: 'red.jpg' },
-        { color: 'Blue', image: 'blue.jpg' },
-      ] },
-      { id: 2, name: 'Product 2', price: 29.99, description: 'Dolor sit amet...', variants: [
-        { color: 'Green', image: 'green.jpg' },
-        { color: 'Yellow', image: 'yellow.jpg' },
-      ] },
-      // Add more products as needed
-    ];
-
-    // Function to generate product list dynamically
-    function generateProductList() {
-      const productListDiv = document.getElementById('productList');
-
-      products.forEach(product => {
-        const productDiv = document.createElement('div');
-        productDiv.classList.add('productContainer');
-        productDiv.innerHTML = `
-          <h3>${product.name}</h3>
-          <p>$${product.price}</p>
-          <img class="productImage" src="${product.variants[0].image}" alt="${product.name}">
-          <button onclick="openSingleProductPage(${product.id})">View Details</button>
-        `;
-        productListDiv.appendChild(productDiv);
-      });
-    }
-
-    // Function to open single product page
-    function openSingleProductPage(productId) {
-      const product = products.find(p => p.id === productId);
-      const singleProductPage = document.getElementById('singleProductPage');
-      const singleProductDetails = document.getElementById('singleProductDetails');
-      const variantGalleryDiv = document.getElementById('variantGallery');
-      const mainProductImage = document.getElementById('mainProductImage');
-
-      singleProductDetails.innerHTML = `
-        <h2>${product.name}</h2>
-        <p>$${product.price}</p>
-        <p>${product.description}</p>
-      `;
-
-      variantGalleryDiv.innerHTML = '';
-      product.variants.forEach(variant => {
-        const variantImage = document.createElement('img');
-        variantImage.src = variant.image;
-        variantImage.alt = `${product.name} - ${variant.color}`;
-        variantImage.classList.add('variantImage');
-        variantImage.addEventListener('click', () => changeProductImage(variant.image));
-        variantGalleryDiv.appendChild(variantImage);
-      });
-
-      mainProductImage.src = product.variants[0].image;
-
-      singleProductPage.style.display = 'flex';
-    }
-
-    // Function to change the main product image
-    function changeProductImage(imageUrl) {
-      const mainProductImage = document.getElementById('mainProductImage');
-      mainProductImage.src = imageUrl;
-    }
-
-    // Function to close the single product page
-    function closeSingleProductPage() {
-      const singleProductPage = document.getElementById('singleProductPage');
-      singleProductPage.style.display = 'none';
-    }
-
-    // Call the function to generate the initial product list
-    generateProductList();
-  </script>
-</body>
-</html>
+export default MyCarousel;
